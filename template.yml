@@ -6,7 +6,7 @@ Resources:
   FastApiFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: app.handler
+      Handler: index.handler
       Runtime: python3.9
       CodeUri: .
       MemorySize: 512
@@ -15,5 +15,5 @@ Resources:
         Api:
           Type: Api
           Properties:
-            Path: /{proxy+}
+            Path: /
             Method: ANY
