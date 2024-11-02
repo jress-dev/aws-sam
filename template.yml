@@ -1,19 +1,17 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Conversational RAG chain
+Description: Indexing Lambda Function
 
 Resources:
-  FastApiFunction:
+  IndexingFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
       Runtime: python3.9
       CodeUri: .
       MemorySize: 512
-      Timeout: 15
-      Events:
-        Api:
-          Type: Api
-          Properties:
-            Path: /
-            Method: ANY
+      Timeout: 30
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - S3ReadPolicy:
+            BucketName: lambda54
